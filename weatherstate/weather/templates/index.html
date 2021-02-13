@@ -1,0 +1,88 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<style>
+    body{
+    background-color:#c89aed;}
+
+
+    input{
+    width:100%;
+    padding:12px 20px;
+    margin:8px 0px;
+    box-size:border-box}
+
+    input::placeholder{
+    color:#e4f5f1;}
+  .submit{
+  background-color:#b6f2e6;}
+
+   .center-column{
+   width:600px;
+   margin:20px auto;
+   padding:20px;
+   background-color:#e06be8;
+   border-radius:3px;
+   box-shadow: 6px 2px 30px 0px rgba(0,0,0,75);}
+
+
+
+   .btn-danger{
+    background-color:#2d4742;
+    border-color:#5c877f;}
+
+    .item-row{
+
+   margin:10px;
+   padding:20px;
+   background-color:#f0f7f6;
+   border-radius:3px;
+   color:#151717;
+   font-size:16px;
+   box-shadow: 0px -1px 10px -4px rgba(0,0,0,75);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+<div class="center-column">
+<form method="post" action="/">
+    {% csrf_token %}
+    {{form.name}}
+    <input class="btn btn-info" type="submit" name="created">
+</form>
+    <div class="todo-list">
+{% for city_weather in weather_data %}
+    <div class="item-row">
+<article class="media">
+                            <div class="media-left">
+                                <figure class="image is-50x50">
+                                    <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <span class="title">{{ city_weather.city }}</span>
+                                        <br>
+                                        <span class="subtitle">{{ city_weather.temperature }}° F</span>
+                                        <br> {{ city_weather.description }}
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+        </div>
+{% endfor %}
+    </div>
+    </div>
